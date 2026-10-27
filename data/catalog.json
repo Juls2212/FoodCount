@@ -1,0 +1,38 @@
+{
+  "categorias": [
+    { "id": "orientales", "nombre": "Orientales", "color": "#D94F5C" },
+    { "id": "fritos", "nombre": "Fritos", "color": "#E8A020" },
+    { "id": "italiana", "nombre": "Italiana", "color": "#3E9B5B" },
+    { "id": "rapida", "nombre": "Rápida", "color": "#3D6FD0" },
+    { "id": "postres", "nombre": "Postres", "color": "#D45E9B" }
+  ],
+  "comidas": [
+    { "id": "sushi", "nombre": "Sushi", "categoria": "orientales", "unidad": { "singular": "pieza", "plural": "piezas" }, "puntos": 2, "paleta": { "primario": "#F2705F", "secundario": "#FFE3DD" } },
+    { "id": "gyozas", "nombre": "Gyozas", "categoria": "orientales", "unidad": { "singular": "pieza", "plural": "piezas" }, "puntos": 2, "paleta": { "primario": "#2FA67A", "secundario": "#D6F2E6" } },
+    { "id": "ramen", "nombre": "Ramen", "categoria": "orientales", "unidad": { "singular": "tazón", "plural": "tazones" }, "puntos": 8, "paleta": { "primario": "#B9552F", "secundario": "#F4D9B0" } },
+    { "id": "alitas", "nombre": "Alitas", "categoria": "fritos", "unidad": { "singular": "pieza", "plural": "piezas" }, "puntos": 2, "paleta": { "primario": "#F28A1F", "secundario": "#FFE0B8" } },
+    { "id": "empanadas", "nombre": "Empanadas", "categoria": "fritos", "unidad": { "singular": "unidad", "plural": "unidades" }, "puntos": 5, "paleta": { "primario": "#E9BC2F", "secundario": "#FFF0BF" } },
+    { "id": "nuggets", "nombre": "Nuggets", "categoria": "fritos", "unidad": { "singular": "pieza", "plural": "piezas" }, "puntos": 1, "paleta": { "primario": "#C48A2C", "secundario": "#F1DDB0" } },
+    { "id": "pizza", "nombre": "Pizza", "categoria": "italiana", "unidad": { "singular": "porción", "plural": "porciones" }, "puntos": 6, "paleta": { "primario": "#E03E36", "secundario": "#FBD9AE" } },
+    { "id": "pasta", "nombre": "Pasta", "categoria": "italiana", "unidad": { "singular": "porción", "plural": "porciones" }, "puntos": 7, "paleta": { "primario": "#8A6BD1", "secundario": "#E4DAF7" } },
+    { "id": "hamburguesa", "nombre": "Hamburguesa", "categoria": "rapida", "unidad": { "singular": "unidad", "plural": "unidades" }, "puntos": 10, "paleta": { "primario": "#8C5A34", "secundario": "#EBD2B6" } },
+    { "id": "tacos", "nombre": "Tacos", "categoria": "rapida", "unidad": { "singular": "unidad", "plural": "unidades" }, "puntos": 3, "paleta": { "primario": "#7FBF3A", "secundario": "#E4F3CE" } },
+    { "id": "hotdog", "nombre": "Hot dog", "categoria": "rapida", "unidad": { "singular": "unidad", "plural": "unidades" }, "puntos": 5, "paleta": { "primario": "#2F6FD6", "secundario": "#D4E3FA" } },
+    { "id": "donas", "nombre": "Donas", "categoria": "postres", "unidad": { "singular": "unidad", "plural": "unidades" }, "puntos": 4, "paleta": { "primario": "#EC6FA5", "secundario": "#FBD6E6" } },
+    { "id": "helado", "nombre": "Helado", "categoria": "postres", "unidad": { "singular": "bola", "plural": "bolas" }, "puntos": 3, "paleta": { "primario": "#27B5C4", "secundario": "#CFF1F5" } }
+  ],
+  "coloresPersonalizados": [
+    { "nombre": "Rojo", "hex": "#E8483F" },
+    { "nombre": "Naranja", "hex": "#F28A1F" },
+    { "nombre": "Amarillo", "hex": "#E9BC2F" },
+    { "nombre": "Lima", "hex": "#7FBF3A" },
+    { "nombre": "Jade", "hex": "#2FA67A" },
+    { "nombre": "Turquesa", "hex": "#27B5C4" },
+    { "nombre": "Cobalto", "hex": "#2F6FD6" },
+    { "nombre": "Índigo", "hex": "#5B4FD1" },
+    { "nombre": "Violeta", "hex": "#8A6BD1" },
+    { "nombre": "Fucsia", "hex": "#D6459B" },
+    { "nombre": "Marrón", "hex": "#8C5A34" },
+    { "nombre": "Pizarra", "hex": "#5E6B7A" }
+  ]
+}

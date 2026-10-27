@@ -1,0 +1,423 @@
+@import "tailwindcss";
+
+/* Valores de respaldo: los reemplaza lib/theme.ts al hidratar. */
+:root {
+  --fondo: #fdeceb;
+  --superficie: #fffbf4;
+  --superficie-2: #fbd9d5;
+  --tinta: #1b1815;
+  --tinta-suave: #5a5249;
+  --tinta-fondo: #1b1815;
+  --primario: #f2705f;
+  --sobre-primario: #14110f;
+  --primario-texto: #b53a2b;
+  --acento: #ffe3dd;
+  --sobre-acento: #14110f;
+  --acento-texto: #b53a2b;
+  --borde: #1b1815;
+  --sombra: #1b1815;
+  --exito: #1b7f4b;
+  --peligro: #b3261e;
+  --aviso: #8a5600;
+  color-scheme: light;
+}
+
+:root[data-theme="oscuro"] {
+  --fondo: #1a1110;
+  --superficie: #261a18;
+  --superficie-2: #33231f;
+  --tinta: #f6f1ea;
+  --tinta-suave: #c9b8b3;
+  --tinta-fondo: #f6f1ea;
+  --primario: #f2705f;
+  --sobre-primario: #14110f;
+  --primario-texto: #f58f82;
+  --acento: #f8c2ba;
+  --sobre-acento: #14110f;
+  --acento-texto: #f8c2ba;
+  --borde: #a45a50;
+  --sombra: #5c231c;
+  --exito: #4ade9a;
+  --peligro: #ff8a80;
+  --aviso: #ffc857;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-tinta: var(--tinta);
+  --color-tinta-suave: var(--tinta-suave);
+  --color-tinta-fondo: var(--tinta-fondo);
+  --color-primario: var(--primario);
+  --color-sobre-primario: var(--sobre-primario);
+  --color-primario-texto: var(--primario-texto);
+  --color-acento: var(--acento);
+  --color-sobre-acento: var(--sobre-acento);
+  --color-acento-texto: var(--acento-texto);
+  --color-borde: var(--borde);
+  --color-exito: var(--exito);
+  --color-peligro: var(--peligro);
+  --color-aviso: var(--aviso);
+  --shadow-duro: 4px 4px 0 var(--sombra);
+  --shadow-duro-sm: 2px 2px 0 var(--sombra);
+  --font-display: var(--fuente-display), ui-sans-serif, system-ui, sans-serif;
+  --font-texto: var(--fuente-texto), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 9rem;
+    background-color: var(--fondo);
+  }
+
+  body {
+    overflow-x: clip;
+    background-color: var(--fondo);
+    color: var(--tinta-fondo);
+    font-family: var(--font-texto);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Cambio de tema: solo propiedades de color, 450 ms. */
+  *,
+  *::before,
+  *::after {
+    transition:
+      background-color 450ms ease,
+      color 450ms ease,
+      border-color 450ms ease,
+      fill 450ms ease,
+      stroke 450ms ease;
+  }
+
+  html.sin-transicion *,
+  html.sin-transicion *::before,
+  html.sin-transicion *::after {
+    transition: none !important;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--tinta-fondo);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .caja {
+    background-color: var(--superficie);
+    color: var(--tinta);
+    border: 3px solid var(--borde);
+    border-radius: 1.25rem;
+    box-shadow: 4px 4px 0 var(--sombra);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.5rem;
+    min-width: 3.5rem;
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    background-color: var(--superficie);
+    color: var(--tinta);
+    border: 3px solid var(--borde);
+    border-radius: 1rem;
+    box-shadow: 4px 4px 0 var(--sombra);
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    transition:
+      transform 120ms ease,
+      background-color 450ms ease,
+      color 450ms ease,
+      border-color 450ms ease;
+  }
+
+  .btn:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--sombra);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primario {
+    background-color: var(--primario);
+    color: var(--sobre-primario);
+  }
+
+  .btn-acento {
+    background-color: var(--acento);
+    color: var(--sobre-acento);
+  }
+
+  .campo {
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--superficie);
+    color: var(--tinta);
+    border: 3px solid var(--borde);
+    border-radius: 0.875rem;
+    font-size: 1rem;
+  }
+}
+
+/* Interruptor de tema: el icono y la perilla se animan solo con transform y opacity. */
+.tema-perilla {
+  transform: translateX(0);
+  transition: transform 350ms cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+:root[data-theme="oscuro"] .tema-perilla {
+  transform: translateX(1.75rem);
+}
+.tema-sol,
+.tema-luna {
+  transition:
+    transform 350ms ease,
+    opacity 250ms ease;
+}
+.tema-sol {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+.tema-luna {
+  transform: rotate(-90deg) scale(0.4);
+  opacity: 0;
+}
+:root[data-theme="oscuro"] .tema-sol {
+  transform: rotate(90deg) scale(0.4);
+  opacity: 0;
+}
+:root[data-theme="oscuro"] .tema-luna {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------- Ilustraciones ---------- */
+.ilus .t {
+  stroke: var(--tinta);
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ilus .t4 {
+  stroke: var(--tinta);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ilus .f-plato {
+  fill: var(--superficie);
+}
+.ilus .f-apoyo {
+  fill: var(--superficie-2);
+}
+.ilus .f-tinta {
+  fill: var(--tinta);
+}
+.ilus .vapor {
+  fill: var(--superficie-2);
+  stroke: var(--tinta);
+  stroke-width: 4;
+  opacity: 0.85;
+}
+
+.ilus [data-p],
+.ilus [class*="i-"]:not(.vb) {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ilus .vb {
+  transform-box: view-box;
+}
+
+/* Animaciones de reposo: solo transform y opacity (salvo la mostaza, que se dibuja). */
+.i-bal {
+  animation: i-bal 2.8s ease-in-out infinite alternate;
+}
+.i-inclina {
+  animation: i-inclina 3.4s ease-in-out infinite alternate;
+}
+.i-flota {
+  animation: i-flota 2.6s ease-in-out infinite alternate;
+}
+.i-respira {
+  transform-origin: 50% 100% !important;
+  animation: i-respira 2.4s ease-in-out infinite;
+}
+.i-giro {
+  animation: i-giro 26s linear infinite;
+}
+.i-vapor {
+  animation: i-vapor 2.8s ease-out infinite;
+}
+.i-gota {
+  animation: i-gota 2.6s ease-in infinite;
+}
+.i-titila {
+  animation: i-titila 1.8s ease-in-out infinite;
+}
+.i-ola {
+  animation: i-ola 2.2s ease-in-out infinite alternate;
+}
+.i-tenedor {
+  animation: i-tenedor 3s ease-in-out infinite alternate;
+}
+.i-mostaza {
+  stroke-dasharray: 1 2;
+  animation: i-mostaza 4.5s ease-in-out infinite;
+}
+
+@keyframes i-bal {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+@keyframes i-inclina {
+  from { transform: rotate(-1.5deg) translateY(0); }
+  to { transform: rotate(1.5deg) translateY(-2px); }
+}
+@keyframes i-flota {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+@keyframes i-respira {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.05, 0.94); }
+}
+@keyframes i-giro {
+  to { transform: rotate(360deg); }
+}
+@keyframes i-vapor {
+  0% { transform: translateY(8px); opacity: 0; }
+  30% { opacity: 0.85; }
+  100% { transform: translateY(-26px); opacity: 0; }
+}
+@keyframes i-gota {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(18px); opacity: 0; }
+}
+@keyframes i-titila {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes i-ola {
+  from { transform: translateX(-2.5px); }
+  to { transform: translateX(2.5px); }
+}
+@keyframes i-tenedor {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
+}
+@keyframes i-mostaza {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  40%, 85% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Pausa: pestana oculta o elemento fuera de pantalla. */
+[data-pausa="true"] .ilus *,
+[data-pausa="true"].ilus * {
+  animation-play-state: paused !important;
+}
+
+/* Barra de estomago: vibra al acercarse a la meta. */
+.tiembla {
+  animation: tiembla var(--tiembla-dur, 0.18s) linear infinite;
+}
+@keyframes tiembla {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(calc(var(--tiembla-amp, 1px) * -1)); }
+  75% { transform: translateX(var(--tiembla-amp, 1px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ilus *,
+  .tiembla {
+    animation: none !important;
+  }
+}
+
+/* ---------- Dialogos ---------- */
+dialog.dialogo {
+  background-color: var(--superficie);
+  color: var(--tinta);
+  max-height: 90dvh;
+}
+dialog.dialogo[open] {
+  animation: dialogo-entra 200ms ease-out;
+}
+dialog.dialogo::backdrop {
+  background-color: rgb(10 8 7 / 0.6);
+}
+@keyframes dialogo-entra {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Cuenta final de la ronda ---------- */
+.pulsa {
+  display: inline-block;
+  animation: pulsa 1s ease-in-out infinite;
+}
+@keyframes pulsa {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
+}
+.parpadeo {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  border: 12px solid;
+  opacity: 0;
+}
+.parpadeo-a {
+  border-color: var(--acento);
+  animation: parpadeo 0.8s steps(1, end) infinite;
+}
+.parpadeo-b {
+  border-color: var(--peligro);
+  animation: parpadeo 0.8s steps(1, end) infinite 0.4s;
+}
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulsa,
+  .parpadeo-a,
+  .parpadeo-b {
+    animation: none !important;
+  }
+  .parpadeo-a {
+    opacity: 1;
+  }
+}
